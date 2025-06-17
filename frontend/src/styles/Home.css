@@ -1,0 +1,54 @@
+/* src/styles/Home.css */
+
+.home {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f8fc;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.home-header h1 {
+  font-size: 2.5rem;
+  color: #004080;
+  margin-bottom: 0.5rem;
+}
+
+.home-header p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.home-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #333;
+}
+
+.home-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.home-card h3 {
+  color: #0066cc;
+  margin-bottom: 0.5rem;
+}
+
+.home-card p {
+  font-size: 0.95rem;
+}

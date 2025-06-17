@@ -1,16 +1,20 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import FeedbackForm from './components/FeedbackForm';
 import ThankYou from './pages/ThankYou';
 import EventList from './components/EventList';
 import DonationForm from './components/DonationForm';
 import StoryBoard from './components/StoryBoard';
+import Home from './pages/Home';
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Home Page */}
+        <Route path="/" element={<Home />} />
+
         {/* Feedback Forms */}
         <Route path="/feedback/donor" element={<FeedbackForm role="donor" />} />
         <Route path="/feedback/volunteer" element={<FeedbackForm role="volunteer" />} />
@@ -27,9 +31,6 @@ function App() {
 
         {/* Impact Stories */}
         <Route path="/stories" element={<StoryBoard />} />
-
-        {/* Optional: Default route or home */}
-        <Route path="/" element={<EventList />} />
       </Routes>
     </Router>
   );
