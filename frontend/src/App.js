@@ -6,7 +6,13 @@ import ThankYou from './pages/ThankYou';
 import EventList from './components/EventList';
 import DonationForm from './components/DonationForm';
 import StoryBoard from './components/StoryBoard';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
 
+const PrivateRoute = ({ children }) => {
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+  return isLoggedIn ? children : <Navigate to="/login" />;
+};
 function App() {
   return (
     <Router>
@@ -27,6 +33,13 @@ function App() {
 
         {/* Impact Stories */}
         <Route path="/stories" element={<StoryBoard />} />
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        } />
 
         {/* Optional: Default route or home */}
         <Route path="/" element={<EventList />} />

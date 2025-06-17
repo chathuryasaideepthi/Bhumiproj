@@ -4,4 +4,10 @@ import App from './App';
 import './styles/FeedbackForm.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+
+root.render(
+  <React.StrictMode>
+serviceWorkerRegistration.register();
+  </React.StrictMode>
+  <App />
+);
