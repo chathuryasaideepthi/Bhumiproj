@@ -1,12 +1,20 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
+import Home from './pages/Home';
 import FeedbackForm from './components/FeedbackForm';
 import ThankYou from './pages/ThankYou';
 import EventList from './components/EventList';
 import DonationForm from './components/DonationForm';
 import StoryBoard from './components/StoryBoard';
-import Home from './pages/Home';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+
+const PrivateRoute = ({ children }) => {
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+  return isLoggedIn ? children : <Navigate to="/login" />;
+};
 
 function App() {
   return (
@@ -23,14 +31,28 @@ function App() {
         {/* Thank You Page */}
         <Route path="/thank-you" element={<ThankYou />} />
 
-        {/* Event Listing */}
+        {/* Events */}
         <Route path="/events" element={<EventList />} />
 
-        {/* Donation Form */}
+        {/* Donations */}
         <Route path="/donate" element={<DonationForm />} />
 
-        {/* Impact Stories */}
+        {/* Stories */}
         <Route path="/stories" element={<StoryBoard />} />
+
+        {/* Auth & Dashboard */}
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Fallback route (optional) */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
